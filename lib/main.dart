@@ -31,6 +31,19 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  List<Icon> scoreKeeper = [];
+  List<String> questions = [
+    'You can lead a cow down stairs but not upstairs.',
+    'Approximately one quarter of human bones are in the feet.',
+    'A slug\'s blood is green',
+  ];
+  List<bool> answers = [
+    false,
+    true,
+    true,
+  ];
+  int questionNumber = 0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,7 +56,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                questions[questionNumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -67,7 +80,20 @@ class _QuizPageState extends State<QuizPage> {
                   fontSize: 20.0,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                bool correctAnswer = answers[questionNumber];
+                if (correctAnswer == true) {
+                  print('user got it right');
+                } else {
+                  print('user got it wrong');
+                }
+                setState(() {
+                  scoreKeeper.add(Icon(
+                    Icons.check,
+                  ));
+                  questionNumber++;
+                });
+              },
             ),
           ),
         ),
@@ -85,9 +111,22 @@ class _QuizPageState extends State<QuizPage> {
                   color: Colors.white,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                bool correctAnswer = answers[questionNumber];
+                if (correctAnswer == false) {
+                  print('user got it right');
+                } else {
+                  print('user got it wrong');
+                }
+                setState(() {
+                  questionNumber++;
+                });
+              },
             ),
           ),
+        ),
+        Row(
+          children: scoreKeeper,
         ),
       ],
     );
