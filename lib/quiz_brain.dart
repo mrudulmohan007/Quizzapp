@@ -65,4 +65,20 @@ class QuizBrain {
   bool getQuestionAnswer() {
     return _questionBank[_questionNumber].answer;
   }
+
+  String getQuestion() {
+    return _questionBank[_questionNumber].question;
+  }
+
+  bool isFinished() {
+    if (_questionNumber >= _questionBank.length - 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void reset() {
+    _questionNumber = 0;
+  }
 }
