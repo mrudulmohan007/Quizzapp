@@ -1,6 +1,6 @@
 # quizzapp
 
-A new Flutter project.
+A fun and engaging quiz app with over 10 true or false questions to challenge your skills and expand your knowledge.
 
 ## Getting Started
 
